@@ -1,0 +1,19 @@
+name: workflow_test
+on:
+  push:
+    branches: ["main"]
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+      
+      - name: file create
+        run: touch test.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: txt-artifact
+          path: test.txt
